@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SharedPreferenceExample</string>
+    <string name="komentar">Komentar…</string>
+    <string name="commentars">Komentar…</string>
+</resources>
