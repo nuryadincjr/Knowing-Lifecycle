@@ -3,13 +3,14 @@ package com.nuryadincjr.sharedpreferenceexample;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.nuryadincjr.sharedpreferenceexample.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
-    private EditText comments;
+    private ActivityMainBinding binding;
     private String comment;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -19,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        comments = findViewById(R.id.inputKomentar);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         preferences = this.getPreferences(Context.MODE_PRIVATE);
         editor = preferences.edit();
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkShare() {
         comment = preferences.getString(getString(R.string.commentars), "");
-        comments.setText(comment);
+        binding.inputKomentar.setText(comment);
     }
 
     // siklus yang terjadi saat inputan telah dimasukan dan dikembalikan ke halaman beranda ponsel
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        comment = comments.getText().toString();
+        comment = binding.inputKomentar.getText().toString();
 
         editor.putString(getString(R.string.commentars), comment);
         editor.commit();
