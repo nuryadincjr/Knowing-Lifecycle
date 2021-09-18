@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         preferences = this.getPreferences(Context.MODE_PRIVATE);
         editor = preferences.edit();
+
+        checkShare();
     }
 
     private void checkShare() {
@@ -34,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     // siklus yang terjadi saat inputan telah dimasukan dan dikembalikan ke halaman beranda ponsel
     // yaitu : onPause - onStop - onDistroy, sehingga perlu penanganan saat aplikasi di distroy
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        checkShare();
-    }
 
     @Override
     protected void onPause() {
